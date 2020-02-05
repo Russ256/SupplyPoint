@@ -1,0 +1,46 @@
+<h1>Hello SupplyPoint!</h1>
+<p>Here is your demo application brought to you by Russell Wilkins.</p>
+
+<h2>Summary</h2>
+<div>
+  I believe the most important part of any system is the business logic in the server api.
+  This in my opionion is the backbone of any software and is crucial for an enterprise system to have a good server architecture providing isolation of the business logic into a single layer.
+  If the server architecture is good then the UI (although also still a very important part of the system) can be easily changed.
+  So the back end is where I have focused the majority of my effort for this demo.  
+
+  The demo consists of an Angular front end running on an ASP.NET Core web site and a back end application built using a CQRS/DDD architecture.
+  It provides for user registration, login and authenitcation and there is a products page that displays a list of products from the database with the ability to create new products.
+  This shows retrieval of data through the query layer and updates through the command layer. All data is held in an sqlite database.
+
+  You can use the register link at the top of the page to create a user and login.   
+</div>
+
+<br />
+
+<h2>Front End</h2>
+<div>The website project contains the angular app and the controllers for calling the application services.
+  I would normally separate the angular UI from the application api but have included them the same project for ease of developing this demo.
+  Dependency Injection is used for all application services.
+</div>
+<br />
+
+<h2>Back End</h2>
+<div>
+  The back end is built using a CQRS architecture for api request handling and Domain Driven Design for the business logic:
+  <ul>
+    <li>Queries are handled using Dapper to provider high performance responses.</li>
+    <li>MedaitR is used to decouple the api requests from the command implementations.</li>
+    <li>FluentValidation is used for command request validation classes.</li>
+    <li>
+      The business logic is built using DDD methodogy:
+      <ul>
+        <li>Entity framework is used for data updates</li>
+        <li>Data access is abstracted using the repository pattern</li>
+        <li>Transaction integrity with commit/rollback logic is implemented using the Unit Of Work pattern implemented in the MediatR request pipeline.</li>
+      </ul>
+    </li>
+    <li>There are a few unit test to show the use of the Moq library for mocking class dependencies.</li>
+  </ul>
+</div>
+
+<br />
